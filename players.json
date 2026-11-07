@@ -1,0 +1,1208 @@
+{
+    "players": [
+        {
+            "id": 1,
+            "hid": 23,
+            "name": "よしずこうき",
+            "rating": 1627,
+            "count": 0
+        },
+        {
+            "id": 2,
+            "hid": 6,
+            "name": "咲夜",
+            "rating": 1755,
+            "count": 0
+        },
+        {
+            "id": 3,
+            "hid": 12,
+            "name": "サキ",
+            "rating": 1741,
+            "count": 0
+        },
+        {
+            "id": 4,
+            "hid": 1,
+            "name": "アモス",
+            "rating": 1835,
+            "count": 0
+        },
+        {
+            "id": 5,
+            "hid": 0,
+            "name": "-",
+            "rating": 1980,
+            "count": 0
+        },
+        {
+            "id": 6,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 7,
+            "hid": 10,
+            "name": "正男",
+            "rating": 1731,
+            "count": 0
+        },
+        {
+            "id": 8,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 9,
+            "hid": 0,
+            "name": "-",
+            "rating": 1660,
+            "count": 0
+        },
+        {
+            "id": 10,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 11,
+            "hid": 0,
+            "name": "-",
+            "rating": 1820,
+            "count": 0
+        },
+        {
+            "id": 12,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 13,
+            "hid": 0,
+            "name": "-",
+            "rating": 1660,
+            "count": 0
+        },
+        {
+            "id": 14,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 15,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 16,
+            "hid": 0,
+            "name": "-",
+            "rating": 1660,
+            "count": 0
+        },
+        {
+            "id": 17,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 18,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 19,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 20,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 21,
+            "hid": 0,
+            "name": "-",
+            "rating": 1660,
+            "count": 0
+        },
+        {
+            "id": 22,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 23,
+            "hid": 0,
+            "name": "-",
+            "rating": 1660,
+            "count": 0
+        },
+        {
+            "id": 24,
+            "hid": 15,
+            "name": "妖夢",
+            "rating": 1643,
+            "count": 0
+        },
+        {
+            "id": 25,
+            "hid": 17,
+            "name": "証拠品",
+            "rating": 1561,
+            "count": 0
+        },
+        {
+            "id": 26,
+            "hid": 7,
+            "name": "タカティン",
+            "rating": 1781,
+            "count": 0
+        },
+        {
+            "id": 27,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 28,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 29,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 30,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 31,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 32,
+            "hid": 14,
+            "name": "魔理沙",
+            "rating": 1768,
+            "count": 0
+        },
+        {
+            "id": 33,
+            "hid": 0,
+            "name": "-",
+            "rating": 1660,
+            "count": 0
+        },
+        {
+            "id": 34,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 35,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 36,
+            "hid": 16,
+            "name": "ミスS",
+            "rating": 1745,
+            "count": 0
+        },
+        {
+            "id": 37,
+            "hid": 0,
+            "name": "-",
+            "rating": 1660,
+            "count": 0
+        },
+        {
+            "id": 38,
+            "hid": 0,
+            "name": "-",
+            "rating": 1586,
+            "count": 0
+        },
+        {
+            "id": 39,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 40,
+            "hid": 9,
+            "name": "BO",
+            "rating": 1754,
+            "count": 0
+        },
+        {
+            "id": 41,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 42,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 43,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 44,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 45,
+            "hid": 0,
+            "name": "-",
+            "rating": 1660,
+            "count": 0
+        },
+        {
+            "id": 46,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 47,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 48,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 49,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 50,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 51,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 52,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 53,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 54,
+            "hid": 13,
+            "name": "霊夢",
+            "rating": 1506,
+            "count": 0
+        },
+        {
+            "id": 55,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 56,
+            "hid": 5,
+            "name": "おぜう",
+            "rating": 1884,
+            "count": 0
+        },
+        {
+            "id": 57,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 58,
+            "hid": 0,
+            "name": "-",
+            "rating": 1796,
+            "count": 0
+        },
+        {
+            "id": 59,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 60,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 61,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 62,
+            "hid": 8,
+            "name": "風間",
+            "rating": 1618,
+            "count": 0
+        },
+        {
+            "id": 63,
+            "hid": 0,
+            "name": "-",
+            "rating": 1660,
+            "count": 0
+        },
+        {
+            "id": 64,
+            "hid": 24,
+            "name": "米山真凛",
+            "rating": 1384,
+            "count": 0
+        },
+        {
+            "id": 65,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 66,
+            "hid": 4,
+            "name": "フラン",
+            "rating": 1812,
+            "count": 0
+        },
+        {
+            "id": 67,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 68,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 69,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 70,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 71,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 72,
+            "hid": 21,
+            "name": "パチュリー",
+            "rating": 1655,
+            "count": 0
+        },
+        {
+            "id": 73,
+            "hid": 20,
+            "name": "チェルレ",
+            "rating": 1732,
+            "count": 0
+        },
+        {
+            "id": 74,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 75,
+            "hid": 11,
+            "name": "ねね",
+            "rating": 1550,
+            "count": 0
+        },
+        {
+            "id": 76,
+            "hid": 22,
+            "name": "アエリグ",
+            "rating": 1682,
+            "count": 0
+        },
+        {
+            "id": 77,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 78,
+            "hid": 2,
+            "name": "ベオルフ",
+            "rating": 1667,
+            "count": 0
+        },
+        {
+            "id": 79,
+            "hid": 18,
+            "name": "すみかぜ",
+            "rating": 1573,
+            "count": 0
+        },
+        {
+            "id": 80,
+            "hid": 3,
+            "name": "エオラキ",
+            "rating": 1667,
+            "count": 0
+        },
+        {
+            "id": 81,
+            "hid": 19,
+            "name": "ファナ",
+            "rating": 1634,
+            "count": 0
+        },
+        {
+            "id": 82,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 83,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 84,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 85,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 86,
+            "hid": 0,
+            "name": "-",
+            "rating": 1820,
+            "count": 0
+        },
+        {
+            "id": 87,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 88,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 89,
+            "hid": 2,
+            "name": "Be",
+            "rating": 1479,
+            "count": 0
+        },
+        {
+            "id": 90,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 91,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 92,
+            "hid": 57,
+            "name": "-",
+            "rating": 1463,
+            "count": 0
+        },
+        {
+            "id": 93,
+            "hid": 13,
+            "name": "霊夢",
+            "rating": 1472,
+            "count": 0
+        },
+        {
+            "id": 94,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 95,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 96,
+            "hid": 15,
+            "name": "妖夢",
+            "rating": 1417,
+            "count": 0
+        },
+        {
+            "id": 97,
+            "hid": 5,
+            "name": "レミスカ",
+            "rating": 1582,
+            "count": 0
+        },
+        {
+            "id": 98,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 99,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 100,
+            "hid": 0,
+            "name": "-",
+            "rating": 1180,
+            "count": 0
+        },
+        {
+            "id": 101,
+            "hid": 0,
+            "name": "-",
+            "rating": 1180,
+            "count": 0
+        },
+        {
+            "id": 102,
+            "hid": 3,
+            "name": "エオコー",
+            "rating": 1818,
+            "count": 0
+        },
+        {
+            "id": 103,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 104,
+            "hid": 0,
+            "name": "-",
+            "rating": 1180,
+            "count": 0
+        },
+        {
+            "id": 105,
+            "hid": 12,
+            "name": "サキ",
+            "rating": 1426,
+            "count": 0
+        },
+        {
+            "id": 106,
+            "hid": 10,
+            "name": "正男",
+            "rating": 1477,
+            "count": 0
+        },
+        {
+            "id": 107,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 108,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 109,
+            "hid": 53,
+            "name": "-",
+            "rating": 1454,
+            "count": 0
+        },
+        {
+            "id": 110,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 111,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 112,
+            "hid": 4,
+            "name": "フラスカ",
+            "rating": 1569,
+            "count": 0
+        },
+        {
+            "id": 113,
+            "hid": 20,
+            "name": "あいたまなみ",
+            "rating": 1540,
+            "count": 0
+        },
+        {
+            "id": 114,
+            "hid": 56,
+            "name": "-",
+            "rating": 1405,
+            "count": 0
+        },
+        {
+            "id": 115,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 116,
+            "hid": 18,
+            "name": "すみかぜ",
+            "rating": 1476,
+            "count": 0
+        },
+        {
+            "id": 117,
+            "hid": 0,
+            "name": "-",
+            "rating": 1489,
+            "count": 0
+        },
+        {
+            "id": 118,
+            "hid": 54,
+            "name": "-",
+            "rating": 1596,
+            "count": 0
+        },
+        {
+            "id": 119,
+            "hid": 16,
+            "name": "ミス$",
+            "rating": 1434,
+            "count": 0
+        },
+        {
+            "id": 120,
+            "hid": 0,
+            "name": "-",
+            "rating": 1180,
+            "count": 0
+        },
+        {
+            "id": 121,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 122,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 123,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 124,
+            "hid": 14,
+            "name": "魔理沙",
+            "rating": 1462,
+            "count": 0
+        },
+        {
+            "id": 125,
+            "hid": 0,
+            "name": "-",
+            "rating": 1180,
+            "count": 0
+        },
+        {
+            "id": 126,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 127,
+            "hid": 0,
+            "name": "-",
+            "rating": 1180,
+            "count": 0
+        },
+        {
+            "id": 128,
+            "hid": 24,
+            "name": "アエリグ",
+            "rating": 1501,
+            "count": 0
+        },
+        {
+            "id": 129,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 130,
+            "hid": 0,
+            "name": "-",
+            "rating": 1180,
+            "count": 0
+        },
+        {
+            "id": 131,
+            "hid": 1,
+            "name": "Amos",
+            "rating": 1670,
+            "count": 0
+        },
+        {
+            "id": 132,
+            "hid": 17,
+            "name": "証拠品さん",
+            "rating": 1609,
+            "count": 0
+        },
+        {
+            "id": 133,
+            "hid": 51,
+            "name": "-",
+            "rating": 1670,
+            "count": 0
+        },
+        {
+            "id": 134,
+            "hid": 0,
+            "name": "-",
+            "rating": 1180,
+            "count": 0
+        },
+        {
+            "id": 135,
+            "hid": 0,
+            "name": "-",
+            "rating": 1180,
+            "count": 0
+        },
+        {
+            "id": 136,
+            "hid": 0,
+            "name": "-",
+            "rating": 1180,
+            "count": 0
+        },
+        {
+            "id": 137,
+            "hid": 0,
+            "name": "-",
+            "rating": 1180,
+            "count": 0
+        },
+        {
+            "id": 138,
+            "hid": 7,
+            "name": "しんのすけ",
+            "rating": 1598,
+            "count": 0
+        },
+        {
+            "id": 139,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 140,
+            "hid": 11,
+            "name": "ねね",
+            "rating": 1474,
+            "count": 0
+        },
+        {
+            "id": 141,
+            "hid": 0,
+            "name": "-",
+            "rating": 1180,
+            "count": 0
+        },
+        {
+            "id": 142,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 143,
+            "hid": 0,
+            "name": "-",
+            "rating": 1252,
+            "count": 0
+        },
+        {
+            "id": 144,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 145,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 146,
+            "hid": 58,
+            "name": "-",
+            "rating": 1262,
+            "count": 0
+        },
+        {
+            "id": 147,
+            "hid": 0,
+            "name": "-",
+            "rating": 1143,
+            "count": 0
+        },
+        {
+            "id": 148,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 149,
+            "hid": 0,
+            "name": "-",
+            "rating": 1180,
+            "count": 0
+        },
+        {
+            "id": 150,
+            "hid": 0,
+            "name": "-",
+            "rating": 1180,
+            "count": 0
+        },
+        {
+            "id": 151,
+            "hid": 0,
+            "name": "-",
+            "rating": 1180,
+            "count": 0
+        },
+        {
+            "id": 152,
+            "hid": 19,
+            "name": "勝部",
+            "rating": 1653,
+            "count": 0
+        },
+        {
+            "id": 153,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 154,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 155,
+            "hid": 9,
+            "name": "ボーちゃん",
+            "rating": 1810,
+            "count": 0
+        },
+        {
+            "id": 156,
+            "hid": 0,
+            "name": "-",
+            "rating": 1180,
+            "count": 0
+        },
+        {
+            "id": 157,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 158,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 159,
+            "hid": 6,
+            "name": "Sakuya",
+            "rating": 1541,
+            "count": 0
+        },
+        {
+            "id": 160,
+            "hid": 52,
+            "name": "-",
+            "rating": 1342,
+            "count": 0
+        },
+        {
+            "id": 161,
+            "hid": 25,
+            "name": "-",
+            "rating": 1593,
+            "count": 0
+        },
+        {
+            "id": 162,
+            "hid": 0,
+            "name": "-",
+            "rating": 1500,
+            "count": 0
+        },
+        {
+            "id": 163,
+            "hid": 21,
+            "name": "ファナ",
+            "rating": 1546,
+            "count": 0
+        },
+        {
+            "id": 164,
+            "hid": 23,
+            "name": "パチュリー",
+            "rating": 1611,
+            "count": 0
+        },
+        {
+            "id": 165,
+            "hid": 55,
+            "name": "-",
+            "rating": 1353,
+            "count": 0
+        },
+        {
+            "id": 166,
+            "hid": 22,
+            "name": "チェルレ",
+            "rating": 1405,
+            "count": 0
+        },
+        {
+            "id": 167,
+            "hid": 8,
+            "name": "風間",
+            "rating": 1726,
+            "count": 0
+        },
+        {
+            "id": 168,
+            "hid": 0,
+            "name": "-",
+            "rating": 1340,
+            "count": 0
+        },
+        {
+            "id": 169,
+            "hid": 0,
+            "name": "-",
+            "rating": 1180,
+            "count": 0
+        },
+        {
+            "id": 170,
+            "hid": 59,
+            "name": "-",
+            "rating": 1272,
+            "count": 0
+        },
+        {
+            "id": 171,
+            "hid": 0,
+            "name": "-",
+            "rating": 1180,
+            "count": 0
+        },
+        {
+            "id": 172,
+            "hid": 60,
+            "name": "-",
+            "rating": 1643,
+            "count": 0
+        }
+    ]
+}

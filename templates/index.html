@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Smash Rating</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --surface: #161b22;
+            --surface-hover: #21262d;
+            --border: #30363d;
+            --text: #f0f6fc;
+            --text-sub: #8b949e;
+            --primary: #58a6ff;
+            --primary-glow: rgba(88, 166, 255, 0.25);
+            --red: #f85149;
+            --blue: #388bfd;
+            --gold: #f1e05a;
+            --silver: #8b949e;
+            --bronze: #d29922;
+            --radius: 14px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text);
+            min-height: 100vh;
+            padding-bottom: 90px;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: rgba(22, 27, 34, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        header h1 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #ff7b72 0%, #79c0ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .badge-sync {
+            font-size: 0.75rem;
+            padding: 4px 8px;
+            background: rgba(56, 139, 253, 0.15);
+            border: 1px solid rgba(56, 139, 253, 0.3);
+            border-radius: 20px;
+            color: #79c0ff;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .badge-sync::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            background: #3fb950;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        main {
+            padding: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.2s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* カード UI */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .card-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-sub);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* プレイヤー選択カード */
+        .player-selector {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .player-card {
+            background: var(--surface-hover);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .player-card:active {
+            transform: scale(0.98);
+            border-color: var(--primary);
+        }
+
+        .player-card.p1 {
+            border-left: 4px solid var(--red);
+        }
+
+        .player-card.p2 {
+            border-left: 4px solid var(--blue);
+        }
+
+        .player-card-info .label {
+            font-size: 0.75rem;
+            color: var(--text-sub);
+            margin-bottom: 4px;
+        }
+
+        .player-card-info .name {
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .player-card-info .rating {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        .player-card .change-btn {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: var(--text);
+        }
+
+        .vs-divider {
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 900;
+            color: var(--text-sub);
+            margin: -4px 0;
+            position: relative;
+        }
+
+        /* 勝敗スコアボタン */
+        .score-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .score-btn {
+            background: var(--surface-hover);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 0;
+            color: var(--text);
+            font-size: 1.1rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            text-align: center;
+        }
+
+        .score-btn:active {
+            transform: scale(0.95);
+        }
+
+        .score-btn.win {
+            color: #ff7b72;
+        }
+
+        .score-btn.win.selected {
+            background: #da3633;
+            color: #fff;
+            border-color: #f85149;
+            box-shadow: 0 0 12px rgba(248, 81, 73, 0.4);
+        }
+
+        .score-btn.lose {
+            color: #79c0ff;
+        }
+
+        .score-btn.lose.selected {
+            background: #1f6feb;
+            color: #fff;
+            border-color: #388bfd;
+            box-shadow: 0 0 12px rgba(56, 139, 253, 0.4);
+        }
+
+        .score-desc {
+            font-size: 0.75rem;
+            color: var(--text-sub);
+            margin-top: 6px;
+            text-align: center;
+        }
+
+        /* メインアクションボタン */
+        .btn-primary {
+            width: 100%;
+            background: linear-gradient(135deg, #1f6feb 0%, #238636 100%);
+            border: none;
+            border-radius: 12px;
+            padding: 16px;
+            color: #fff;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.15s;
+            box-shadow: 0 4px 16px rgba(35, 134, 54, 0.3);
+            margin-top: 8px;
+        }
+
+        .btn-primary:active {
+            transform: scale(0.98);
+            opacity: 0.9;
+        }
+
+        .btn-primary:disabled {
+            background: var(--surface-hover);
+            color: var(--text-sub);
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+
+        /* ランダム対戦ボタン */
+        .btn-random {
+            width: 100%;
+            background: linear-gradient(135deg, #8957e5 0%, #da3633 100%);
+            border: none;
+            border-radius: 12px;
+            padding: 16px;
+            color: #fff;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.15s;
+            box-shadow: 0 4px 16px rgba(137, 87, 229, 0.3);
+            margin-bottom: 16px;
+        }
+
+        .btn-random:active {
+            transform: scale(0.98);
+        }
+
+        /* クラス切り替えピル */
+        .pill-switch {
+            display: flex;
+            background: var(--surface-hover);
+            border-radius: 10px;
+            padding: 4px;
+            margin-bottom: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .pill-btn {
+            flex: 1;
+            padding: 8px 0;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            color: var(--text-sub);
+            border: none;
+            background: transparent;
+            transition: all 0.2s;
+        }
+
+        .pill-btn.active {
+            background: var(--primary);
+            color: #0d1117;
+            box-shadow: 0 2px 8px var(--primary-glow);
+        }
+
+        /* 検索バー */
+        .search-box {
+            width: 100%;
+            background: var(--surface-hover);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 10px 14px;
+            color: var(--text);
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+            outline: none;
+        }
+
+        .search-box:focus {
+            border-color: var(--primary);
+        }
+
+        /* ランキングリスト */
+        .ranking-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .ranking-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .rank-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .rank-num {
+            font-size: 1rem;
+            font-weight: 800;
+            width: 32px;
+            text-align: center;
+            color: var(--text-sub);
+        }
+
+        .rank-1 { color: #f1e05a; font-size: 1.3rem; }
+        .rank-2 { color: #e6edf3; font-size: 1.2rem; }
+        .rank-3 { color: #d29922; font-size: 1.15rem; }
+
+        .rank-name {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .rank-right {
+            text-align: right;
+        }
+
+        .rank-rating {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .rank-count {
+            font-size: 0.75rem;
+            color: var(--text-sub);
+        }
+
+        /* 下部ナビゲーションバー */
+        .nav-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(22, 27, 34, 0.92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0 calc(10px + env(safe-area-inset-bottom, 0px));
+            z-index: 100;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            color: var(--text-sub);
+            font-size: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            width: 33.3%;
+            transition: color 0.2s;
+        }
+
+        .nav-item.active {
+            color: var(--primary);
+        }
+
+        .nav-icon {
+            font-size: 1.3rem;
+        }
+
+        /* モーダル */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(4px);
+            z-index: 200;
+            display: none;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--surface);
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            width: 100%;
+            max-width: 600px;
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            animation: slideUp 0.25s cubic-bezier(0.1, 0.9, 0.2, 1);
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .modal-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+        }
+
+        .modal-close {
+            background: var(--surface-hover);
+            border: 1px solid var(--border);
+            color: var(--text);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+
+        .modal-player-list {
+            overflow-y: auto;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding-bottom: 20px;
+        }
+
+        .modal-player-item {
+            background: var(--surface-hover);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .modal-player-item:active {
+            border-color: var(--primary);
+            background: rgba(88, 166, 255, 0.1);
+        }
+
+        /* 結果ポップアップ */
+        .result-dialog {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 24px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            margin: auto;
+            animation: popIn 0.25s cubic-bezier(0.1, 0.9, 0.2, 1);
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .result-diff {
+            font-size: 1.4rem;
+            font-weight: 900;
+            margin: 8px 0;
+        }
+
+        .result-diff.plus { color: #3fb950; }
+        .result-diff.minus { color: #f85149; }
+    </style>
+</head>
+<body>
+
+    <!-- ヘッダー -->
+    <header>
+        <h1>⚔️ Smash Rating</h1>
+        <div class="badge-sync">PCと同期中</div>
+    </header>
+
+    <main>
+        <!-- =================== タブ1: レート戦 =================== -->
+        <div id="tab-battle" class="tab-content active">
+            <div class="card">
+                <div class="card-title">
+                    <span>対戦プレイヤー</span>
+                </div>
+                <div class="player-selector">
+                    <div class="player-card p1" onclick="openPlayerModal('A')">
+                        <div class="player-card-info">
+                            <div class="label">プレイヤー1 (クラスA)</div>
+                            <div class="name" id="p1-name">プレイヤーを選択</div>
+                            <div class="rating" id="p1-rating">-</div>
+                        </div>
+                        <div class="change-btn">変更</div>
+                    </div>
+
+                    <div class="vs-divider">VS</div>
+
+                    <div class="player-card p2" onclick="openPlayerModal('B')">
+                        <div class="player-card-info">
+                            <div class="label">プレイヤー2 (クラスB)</div>
+                            <div class="name" id="p2-name">プレイヤーを選択</div>
+                            <div class="rating" id="p2-rating">-</div>
+                        </div>
+                        <div class="change-btn">変更</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <span>試合結果（P1視点）</span>
+                </div>
+                <div class="score-desc">P1が勝った場合（ストック差）</div>
+                <div class="score-grid">
+                    <button class="score-btn win" onclick="selectScore(3)">+3</button>
+                    <button class="score-btn win" onclick="selectScore(2)">+2</button>
+                    <button class="score-btn win" onclick="selectScore(1)">+1</button>
+                </div>
+                <div class="score-desc" style="margin-top: 12px;">P2が勝った場合</div>
+                <div class="score-grid">
+                    <button class="score-btn lose" onclick="selectScore(-1)">-1</button>
+                    <button class="score-btn lose" onclick="selectScore(-2)">-2</button>
+                    <button class="score-btn lose" onclick="selectScore(-3)">-3</button>
+                </div>
+            </div>
+
+            <button id="btn-submit" class="btn-primary" onclick="submitBattle()" disabled>
+                対戦結果を登録する
+            </button>
+        </div>
+
+        <!-- =================== タブ2: ランダム対戦 =================== -->
+        <div id="tab-random" class="tab-content">
+            <button class="btn-random" onclick="drawRandomPair()">
+                🎲 ランダムマッチングを抽選
+            </button>
+
+            <div id="random-card-container" style="display: none;">
+                <div class="card">
+                    <div class="card-title">
+                        <span>抽選された対戦カード</span>
+                    </div>
+                    <div class="player-selector">
+                        <div class="player-card p1">
+                            <div class="player-card-info">
+                                <div class="label">プレイヤー1 (クラスA)</div>
+                                <div class="name" id="rnd-p1-name">-</div>
+                                <div class="rating" id="rnd-p1-rating">-</div>
+                            </div>
+                        </div>
+                        <div class="vs-divider">VS</div>
+                        <div class="player-card p2">
+                            <div class="player-card-info">
+                                <div class="label">プレイヤー2 (クラスB)</div>
+                                <div class="name" id="rnd-p2-name">-</div>
+                                <div class="rating" id="rnd-p2-rating">-</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <span>試合結果（P1視点）</span>
+                    </div>
+                    <div class="score-desc">P1が勝利</div>
+                    <div class="score-grid">
+                        <button class="score-btn win" onclick="selectRandomScore(3)">+3</button>
+                        <button class="score-btn win" onclick="selectRandomScore(2)">+2</button>
+                        <button class="score-btn win" onclick="selectRandomScore(1)">+1</button>
+                    </div>
+                    <div class="score-desc" style="margin-top: 12px;">P2が勝利</div>
+                    <div class="score-grid">
+                        <button class="score-btn lose" onclick="selectRandomScore(-1)">-1</button>
+                        <button class="score-btn lose" onclick="selectRandomScore(-2)">-2</button>
+                        <button class="score-btn lose" onclick="selectRandomScore(-3)">-3</button>
+                    </div>
+                </div>
+
+                <button id="btn-submit-random" class="btn-primary" onclick="submitRandomBattle()" disabled>
+                    対戦結果を登録する
+                </button>
+            </div>
+        </div>
+
+        <!-- =================== タブ3: ランキング =================== -->
+        <div id="tab-ranking" class="tab-content">
+            <div class="pill-switch">
+                <button class="pill-btn active" id="btn-classA" onclick="switchRankingClass('A')">クラスA</button>
+                <button class="pill-btn" id="btn-classB" onclick="switchRankingClass('B')">クラスB</button>
+            </div>
+
+            <input type="text" class="search-box" id="ranking-search" placeholder="名前で検索..." oninput="filterRanking()">
+
+            <div class="ranking-list" id="ranking-list">
+                <!-- JSで動的生成 -->
+            </div>
+        </div>
+    </main>
+
+    <!-- 下部ナビゲーションバー -->
+    <nav class="nav-bar">
+        <button class="nav-item active" onclick="switchTab('battle')">
+            <span class="nav-icon">⚔️</span>
+            <span>レート戦</span>
+        </button>
+        <button class="nav-item" onclick="switchTab('random')">
+            <span class="nav-icon">🎲</span>
+            <span>ランダム</span>
+        </button>
+        <button class="nav-item" onclick="switchTab('ranking')">
+            <span class="nav-icon">🏆</span>
+            <span>ランキング</span>
+        </button>
+    </nav>
+
+    <!-- プレイヤー選択モーダル -->
+    <div class="modal-overlay" id="player-modal" onclick="closePlayerModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <div class="modal-title" id="modal-title">プレイヤーを選択</div>
+                <div class="modal-close" onclick="closePlayerModal()">✕</div>
+            </div>
+            <input type="text" class="search-box" id="modal-search" placeholder="名前を絞り込み..." oninput="filterModalList()">
+            <div class="modal-player-list" id="modal-player-list"></div>
+        </div>
+    </div>
+
+    <!-- 結果モーダル -->
+    <div class="modal-overlay" id="result-modal" style="align-items: center;" onclick="closeResultModal()">
+        <div class="result-dialog" onclick="event.stopPropagation()">
+            <h2 style="font-size: 1.3rem; margin-bottom: 12px;">🎉 対戦結果</h2>
+            <div id="result-details" style="text-align: left; background: var(--surface-hover); padding: 14px; border-radius: 12px; margin-bottom: 16px;"></div>
+            <button class="btn-primary" onclick="closeResultModal()">OK</button>
+        </div>
+    </div>
+
+    <script>
+        let allPlayers = { classA: [], classB: [] };
+        let selectedP1 = null;
+        let selectedP2 = null;
+        let selectedScore = null;
+
+        let randomP1 = null;
+        let randomP2 = null;
+        let selectedRandomScore = null;
+
+        let currentModalClass = 'A';
+        let currentRankingClass = 'A';
+
+        // 初期化ロード
+        async function fetchPlayers() {
+            try {
+                const res = await fetch('/api/players');
+                const data = await res.json();
+                allPlayers.classA = data.classA.sort((a,b) => b.rating - a.rating);
+                allPlayers.classB = data.classB.sort((a,b) => b.rating - a.rating);
+
+                // デフォルトP1/P2
+                if (!selectedP1 && allPlayers.classA.length > 0) {
+                    setP1(allPlayers.classA[0]);
+                }
+                if (!selectedP2 && allPlayers.classB.length > 0) {
+                    setP2(allPlayers.classB[0]);
+                }
+
+                renderRanking();
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        // タブ切り替え
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+
+            document.getElementById('tab-' + tabId).classList.add('active');
+
+            const navIndex = tabId === 'battle' ? 0 : (tabId === 'random' ? 1 : 2);
+            document.querySelectorAll('.nav-item')[navIndex].classList.add('active');
+
+            if (tabId === 'ranking') {
+                renderRanking();
+            }
+        }
+
+        // プレイヤー設定
+        function setP1(p) {
+            selectedP1 = p;
+            document.getElementById('p1-name').innerText = p.name;
+            document.getElementById('p1-rating').innerText = `レート: ${p.rating}`;
+            updateSubmitButton();
+        }
+
+        function setP2(p) {
+            selectedP2 = p;
+            document.getElementById('p2-name').innerText = p.name;
+            document.getElementById('p2-rating').innerText = `レート: ${p.rating}`;
+            updateSubmitButton();
+        }
+
+        // スコア選択
+        function selectScore(val) {
+            selectedScore = val;
+            document.querySelectorAll('#tab-battle .score-btn').forEach(btn => {
+                btn.classList.remove('selected');
+                if (btn.innerText === (val > 0 ? `+${val}` : `${val}`)) {
+                    btn.classList.add('selected');
+                }
+            });
+            updateSubmitButton();
+        }
+
+        function updateSubmitButton() {
+            const btn = document.getElementById('btn-submit');
+            btn.disabled = !(selectedP1 && selectedP2 && selectedScore !== null);
+        }
+
+        // モーダル操作
+        function openPlayerModal(cls) {
+            currentModalClass = cls;
+            document.getElementById('modal-title').innerText = cls === 'A' ? 'プレイヤー1 (クラスA) を選択' : 'プレイヤー2 (クラスB) を選択';
+            document.getElementById('modal-search').value = '';
+            document.getElementById('player-modal').classList.add('active');
+            renderModalList();
+        }
+
+        function closePlayerModal() {
+            document.getElementById('player-modal').classList.remove('active');
+        }
+
+        function renderModalList() {
+            const listEl = document.getElementById('modal-player-list');
+            const search = document.getElementById('modal-search').value.toLowerCase();
+            const list = currentModalClass === 'A' ? allPlayers.classA : allPlayers.classB;
+
+            listEl.innerHTML = '';
+            const filtered = list.filter(p => p.name.toLowerCase().includes(search));
+
+            filtered.forEach(p => {
+                const item = document.createElement('div');
+                item.className = 'modal-player-item';
+                item.innerHTML = `
+                    <div>
+                        <div style="font-weight: 700; font-size: 1.05rem;">${p.name}</div>
+                        <div style="font-size: 0.8rem; color: var(--text-sub);">試合数: ${p.count || 0}回</div>
+                    </div>
+                    <div style="font-weight: 800; color: var(--primary); font-size: 1.1rem;">${p.rating}</div>
+                `;
+                item.onclick = () => {
+                    if (currentModalClass === 'A') setP1(p);
+                    else setP2(p);
+                    closePlayerModal();
+                };
+                listEl.appendChild(item);
+            });
+        }
+
+        function filterModalList() {
+            renderModalList();
+        }
+
+        // 結果送信
+        async function submitBattle() {
+            if (!selectedP1 || !selectedP2 || selectedScore === null) return;
+            try {
+                const res = await fetch('/api/battle', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        p1_id: selectedP1.id,
+                        p2_id: selectedP2.id,
+                        result: selectedScore
+                    })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    showResultDialog(data);
+                    await fetchPlayers();
+                    // 更新されたレートを反映
+                    setP1(allPlayers.classA.find(p => p.id === selectedP1.id) || selectedP1);
+                    setP2(allPlayers.classB.find(p => p.id === selectedP2.id) || selectedP2);
+                }
+            } catch (err) {
+                alert('エラーが発生しました: ' + err.message);
+            }
+        }
+
+        // ランダムマッチ
+        async function drawRandomPair() {
+            try {
+                const res = await fetch('/api/random-pair');
+                const data = await res.json();
+                if (data.error) {
+                    alert(data.error);
+                    return;
+                }
+                randomP1 = data.p1;
+                randomP2 = data.p2;
+
+                document.getElementById('rnd-p1-name').innerText = randomP1.name;
+                document.getElementById('rnd-p1-rating').innerText = `レート: ${randomP1.rating}`;
+                document.getElementById('rnd-p2-name').innerText = randomP2.name;
+                document.getElementById('rnd-p2-rating').innerText = `レート: ${randomP2.rating}`;
+
+                selectedRandomScore = null;
+                document.querySelectorAll('#tab-random .score-btn').forEach(b => b.classList.remove('selected'));
+                document.getElementById('btn-submit-random').disabled = true;
+
+                document.getElementById('random-card-container').style.display = 'block';
+            } catch (err) {
+                alert('マッチング取得失敗: ' + err.message);
+            }
+        }
+
+        function selectRandomScore(val) {
+            selectedRandomScore = val;
+            document.querySelectorAll('#tab-random .score-btn').forEach(btn => {
+                btn.classList.remove('selected');
+                if (btn.innerText === (val > 0 ? `+${val}` : `${val}`)) {
+                    btn.classList.add('selected');
+                }
+            });
+            document.getElementById('btn-submit-random').disabled = false;
+        }
+
+        async function submitRandomBattle() {
+            if (!randomP1 || !randomP2 || selectedRandomScore === null) return;
+            try {
+                const res = await fetch('/api/battle', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        p1_id: randomP1.id,
+                        p2_id: randomP2.id,
+                        result: selectedRandomScore
+                    })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    showResultDialog(data);
+                    await fetchPlayers();
+                    document.getElementById('random-card-container').style.display = 'none';
+                }
+            } catch (err) {
+                alert('エラー: ' + err.message);
+            }
+        }
+
+        // 結果ダイアログ表示
+        function showResultDialog(data) {
+            const p1Diff = data.p1.diff >= 0 ? `+${data.p1.diff}` : `${data.p1.diff}`;
+            const p2Diff = data.p2.diff >= 0 ? `+${data.p2.diff}` : `${data.p2.diff}`;
+
+            document.getElementById('result-details').innerHTML = `
+                <div style="margin-bottom: 10px;">
+                    <strong style="color: var(--red); font-size: 1.1rem;">${data.p1.name}</strong><br>
+                    <span>${data.p1.old_rating} → <strong>${data.p1.new_rating}</strong></span>
+                    <span class="result-diff ${data.p1.diff >= 0 ? 'plus' : 'minus'}" style="margin-left: 8px;">(${p1Diff})</span>
+                </div>
+                <div style="border-top: 1px solid var(--border); padding-top: 10px;">
+                    <strong style="color: var(--blue); font-size: 1.1rem;">${data.p2.name}</strong><br>
+                    <span>${data.p2.old_rating} → <strong>${data.p2.new_rating}</strong></span>
+                    <span class="result-diff ${data.p2.diff >= 0 ? 'plus' : 'minus'}" style="margin-left: 8px;">(${p2Diff})</span>
+                </div>
+            `;
+            document.getElementById('result-modal').classList.add('active');
+        }
+
+        function closeResultModal() {
+            document.getElementById('result-modal').classList.remove('active');
+        }
+
+        // ランキング
+        function switchRankingClass(cls) {
+            currentRankingClass = cls;
+            document.getElementById('btn-classA').classList.toggle('active', cls === 'A');
+            document.getElementById('btn-classB').classList.toggle('active', cls === 'B');
+            renderRanking();
+        }
+
+        function renderRanking() {
+            const listEl = document.getElementById('ranking-list');
+            const search = document.getElementById('ranking-search').value.toLowerCase();
+            const list = currentRankingClass === 'A' ? allPlayers.classA : allPlayers.classB;
+
+            listEl.innerHTML = '';
+            const filtered = list.filter(p => p.name.toLowerCase().includes(search));
+
+            let currentRank = 1;
+            let prevRating = null;
+            let sameRankCount = 0;
+
+            filtered.forEach((p, idx) => {
+                if (prevRating === null) {
+                    currentRank = 1;
+                    sameRankCount = 1;
+                } else if (p.rating === prevRating) {
+                    sameRankCount++;
+                } else {
+                    currentRank += sameRankCount;
+                    sameRankCount = 1;
+                }
+                prevRating = p.rating;
+
+                const item = document.createElement('div');
+                item.className = 'ranking-item';
+
+                let rankClass = '';
+                if (currentRank === 1) rankClass = 'rank-1';
+                else if (currentRank === 2) rankClass = 'rank-2';
+                else if (currentRank === 3) rankClass = 'rank-3';
+
+                item.innerHTML = `
+                    <div class="rank-left">
+                        <div class="rank-num ${rankClass}">${currentRank === 1 ? '🥇' : (currentRank === 2 ? '🥈' : (currentRank === 3 ? '🥉' : currentRank))}</div>
+                        <div class="rank-name">${p.name}</div>
+                    </div>
+                    <div class="rank-right">
+                        <div class="rank-rating">${p.rating}</div>
+                        <div class="rank-count">${p.count || 0}試合</div>
+                    </div>
+                `;
+                listEl.appendChild(item);
+            });
+        }
+
+        function filterRanking() {
+            renderRanking();
+        }
+
+        // 起動時取得
+        fetchPlayers();
+    </script>
+</body>
+</html>
+

@@ -44,13 +44,15 @@ def load_data():
                 "Authorization": f"Bearer {GITHUB_TOKEN}",
                 "Accept": "application/vnd.github+json"
             }
-            res = requests.get(url, headers=headers, timeout=5)
+            res = requests.get(url, headers=headers, timeout=10)
             if res.status_code == 200:
                 gist_data = res.json()
                 files = gist_data.get("files", {})
                 if "players.json" in files:
                     content = files["players.json"].get("content", "")
                     return json.loads(content)
+            else:
+                print(f"[Warn] Failed to load from Gist: HTTP {res.status_code} {res.text}", file=sys.stderr)
         except Exception as e:
             print(f"[Warn] Failed to load from Gist, falling back to local file: {e}", file=sys.stderr)
 
@@ -80,7 +82,9 @@ def save_data(data):
                     }
                 }
             }
-            requests.patch(url, headers=headers, json=body, timeout=5)
+            res = requests.patch(url, headers=headers, json=body, timeout=10)
+            if res.status_code != 200:
+                print(f"[Warn] Failed to save to Gist: HTTP {res.status_code} {res.text}", file=sys.stderr)
         except Exception as e:
             print(f"[Warn] Failed to save to Gist: {e}", file=sys.stderr)
 
@@ -113,7 +117,8 @@ def get_players():
     return jsonify({
         "all": players,
         "classA": classA,
-        "classB": classB
+        "classB": classB,
+        "cloud_sync": bool(GITHUB_TOKEN and GIST_ID)
     })
 
 @app.route("/api/random-pair", methods=["GET"])

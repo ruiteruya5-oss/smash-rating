@@ -556,7 +556,7 @@
     <!-- ヘッダー -->
     <header>
         <h1>⚔️ Smash Rating</h1>
-        <div class="badge-sync">PCと同期中</div>
+        <div class="badge-sync" id="sync-badge">読み込み中...</div>
     </header>
 
     <main>
@@ -738,6 +738,11 @@
                 const data = await res.json();
                 allPlayers.classA = data.classA.sort((a,b) => b.rating - a.rating);
                 allPlayers.classB = data.classB.sort((a,b) => b.rating - a.rating);
+
+                const badge = document.getElementById('sync-badge');
+                if (badge) {
+                    badge.innerText = data.cloud_sync ? 'クラウド保存ON' : 'ローカル保存';
+                }
 
                 // デフォルトP1/P2
                 if (!selectedP1 && allPlayers.classA.length > 0) {
